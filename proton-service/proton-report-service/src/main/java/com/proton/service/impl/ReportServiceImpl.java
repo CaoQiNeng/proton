@@ -1,24 +1,35 @@
 package com.proton.service.impl;
 
+import com.proton.action.TccActionReport;
 import com.proton.dao.ReportDao;
 import com.proton.entity.Report;
+import com.proton.service.IReportService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
-public class ReportServiceImpl {
+@Transactional(rollbackFor = Exception.class)
+public class ReportServiceImpl implements IReportService {
 
-    @Autowired
-    private ReportDao reportDao;
+    private final ReportDao reportDao;
+
+    private final TccActionReport tccActionAccount;
 
     static int a = 0;
 
+    public ReportServiceImpl(ReportDao reportDao, TccActionReport tccActionAccount) {
+        this.reportDao = reportDao;
+        this.tccActionAccount = tccActionAccount;
+    }
+
+    @Override
+//    @GlobalTransactional
     public void save() throws Exception {
         Report report = new Report(a + "",0,1,1,1,0);
-        reportDao.save(report);
+        tccActionAccount.save(null, report);
         a++;
 
         log.info("create report success.");

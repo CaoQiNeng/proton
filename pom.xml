@@ -14,6 +14,7 @@
         <module>proton-gateway</module>
         <module>proton-common</module>
         <module>proton-mvc-config</module>
+        <module>proton-service</module>
     </modules>
 
     <packaging>pom</packaging>

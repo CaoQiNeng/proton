@@ -1,9 +1,11 @@
 package com.proton.service.impl;
 
 import com.proton.account.BalanceInfo;
+import com.proton.action.TccActionAccount;
 import com.proton.dao.BalanceDao;
 import com.proton.entity.ProtonBalance;
 import com.proton.service.IBalanceService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,17 +18,21 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(rollbackFor = Exception.class)
 public class BalanceServiceImpl implements IBalanceService {
 
+//    private final BalanceDao balanceDao;
+    private final TccActionAccount tccActionAccount;
+
     private final BalanceDao balanceDao;
 
-    public BalanceServiceImpl(BalanceDao balanceDao) {
+    public BalanceServiceImpl(TccActionAccount tccActionAccount, BalanceDao balanceDao) {
+        this.tccActionAccount = tccActionAccount;
         this.balanceDao = balanceDao;
     }
 
     @Override
     public BalanceInfo getCurrentUserBalanceInfo() {
-        Long userId = 11L;
+        Long userId = 16L;
         BalanceInfo balanceInfo = new BalanceInfo(
-                userId, 0L
+                userId, 0L ,0l
         );
 
         ProtonBalance protonBalance =
@@ -46,26 +52,10 @@ public class BalanceServiceImpl implements IBalanceService {
     }
 
     @Override
+//    @GlobalTransactional
     public BalanceInfo deductBalance(BalanceInfo balanceInfo) {
-        Long userId = 11L;
-        // 扣减用户余额的一个基本原则: 扣减额 <= 当前用户余额
-        ProtonBalance protonBalance =
-                balanceDao.findByUserId(userId);
-        if (null == protonBalance
-                || protonBalance.getBalance() - balanceInfo.getBalance() < 0
-        ) {
-            throw new RuntimeException("user balance is not enough!");
-        }
+        tccActionAccount.deductBalance(null, balanceInfo);
 
-        Long sourceBalance = protonBalance.getBalance();
-        protonBalance.setBalance(protonBalance.getBalance() - balanceInfo.getBalance());
-        log.info("deduct balance: [{}], [{}], [{}]",
-                balanceDao.save(protonBalance).getId(), sourceBalance,
-                balanceInfo.getBalance());
-
-        return new BalanceInfo(
-                protonBalance.getUserId(),
-                protonBalance.getBalance()
-        );
+        return new BalanceInfo();
     }
 }

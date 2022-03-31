@@ -22,4 +22,10 @@ public class AnalysisController {
 //        analysisService.analysis();
         analysisService.analysisSeata();
     }
+
+    @PostMapping("/analysisSeataTcc")
+    public void analysisSeataTcc() {
+//        analysisService.analysis();
+        analysisService.analysisSeataTcc();
+    }
 }

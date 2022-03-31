@@ -1,11 +1,11 @@
 server:
-  port: 9200
+  port: 9100
   servlet:
-    context-path: /proton-report
+    context-path: /proton-account
 
 spring:
   application:
-    name: proton-report # 应用名称也是构成 Nacos 配置管理 dataId 字段的一部分 (当 config.prefix 为空时)
+    name: proton-account # 应用名称也是构成 Nacos 配置管理 dataId 字段的一部分 (当 config.prefix 为空时)
   cloud:
     nacos:
       # 服务注册发现

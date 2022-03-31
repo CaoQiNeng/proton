@@ -25,7 +25,8 @@ public class BalanceController {
     }
 
     @PutMapping("/deduct-balance")
-    public BalanceInfo deductBalance(@RequestBody BalanceInfo balanceInfo) {
-        return balanceService.deductBalance(balanceInfo);
+    public void deductBalance() {
+        BalanceInfo balanceInfo = new BalanceInfo(16L, 1L, 0L);
+        balanceService.deductBalance(balanceInfo);
     }
 }

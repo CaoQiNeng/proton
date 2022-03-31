@@ -9,13 +9,16 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>proton-analysis</artifactId>
+    <artifactId>proton-service</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
         <module>proton-account-service</module>
         <module>proton-analysis-service</module>
+        <module>proton-analysis-dl-service</module>
+        <module>proton-analysis-rpeaks-service</module>
+        <module>proton-analysis-hrv-service</module>
         <module>proton-report-service</module>
         <module>proton-service-config</module>
         <module>proton-service-sdk</module>

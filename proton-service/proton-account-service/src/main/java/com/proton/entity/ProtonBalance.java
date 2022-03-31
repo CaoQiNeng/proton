@@ -18,7 +18,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "t_ecommerce_balance")
+@Table(name = "t_proton_balance")
 public class ProtonBalance {
 
     /** 自增主键 */
@@ -34,6 +34,10 @@ public class ProtonBalance {
     /** 账户余额 */
     @Column(name = "balance", nullable = false)
     private Long balance;
+
+    /** 冻结金额 */
+    @Column(name = "freeze", nullable = false)
+    private Long freeze;
 
     /** 创建时间 */
     @CreatedDate

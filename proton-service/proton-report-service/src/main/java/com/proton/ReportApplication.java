@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * */
 //@EnableDiscoveryClient
 @SpringBootApplication
-public class RportApplication {
+public class ReportApplication {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(RportApplication.class, args);
+        SpringApplication.run(ReportApplication.class, args);
     }
 }

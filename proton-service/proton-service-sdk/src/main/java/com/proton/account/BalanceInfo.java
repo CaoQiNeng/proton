@@ -15,4 +15,6 @@ public class BalanceInfo {
     private Long userId;
 
     private Long balance;
+
+    private Long freeze;
 }

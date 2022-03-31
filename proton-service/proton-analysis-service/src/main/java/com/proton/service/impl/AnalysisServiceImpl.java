@@ -2,25 +2,17 @@ package com.proton.service.impl;
 
 import com.proton.dao.AnalysisDao;
 import com.proton.entity.AnalysisResult;
-import com.proton.feign.AnalysisDLClient;
-import com.proton.feign.AnalysisHrvClient;
-import com.proton.feign.AnalysisRpeaksClient;
+import com.proton.feign.*;
 import com.proton.service.IAnalysisService;
 import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * <h1>订单相关服务接口实现</h1>
@@ -37,6 +29,10 @@ public class AnalysisServiceImpl implements IAnalysisService {
 
     private final AnalysisDao analysisDao;
 
+    private final ReportClient reportClient;
+
+    private final AccountClient accountClient;
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -46,13 +42,25 @@ public class AnalysisServiceImpl implements IAnalysisService {
     static int a= 0;
 
     public AnalysisServiceImpl(AnalysisDLClient analysisDLClient, AnalysisRpeaksClient analysisRpeaksClient,
-                                AnalysisHrvClient analysisHrvClient, AnalysisDao analysisDao) {
+                               AnalysisHrvClient analysisHrvClient, AnalysisDao analysisDao, ReportClient reportClient, AccountClient accountClient) {
         this.analysisDLClient = analysisDLClient;
         this.analysisRpeaksClient = analysisRpeaksClient;
         this.analysisHrvClient = analysisHrvClient;
         this.analysisDao = analysisDao;
+        this.reportClient = reportClient;
+        this.accountClient = accountClient;
     }
 
+    @Override
+    @GlobalTransactional(rollbackFor = Exception.class)
+    public void analysisSeataTcc() {
+        reportClient.saveTest();
+
+        accountClient.deductBalance();
+
+
+//        int a= 3/0;
+    }
 
     @Override
     @GlobalTransactional(rollbackFor = Exception.class)

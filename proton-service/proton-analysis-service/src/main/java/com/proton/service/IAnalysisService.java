@@ -9,5 +9,7 @@ public interface IAnalysisService {
      * */
     void analysis();
 
+     void analysisSeataTcc();
+
     void analysisSeata();
 }

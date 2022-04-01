@@ -4,7 +4,7 @@ import com.proton.dao.AnalysisDao;
 import com.proton.entity.AnalysisResult;
 import com.proton.feign.*;
 import com.proton.service.IAnalysisService;
-import io.seata.spring.annotation.GlobalTransactional;
+//import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -52,32 +52,43 @@ public class AnalysisServiceImpl implements IAnalysisService {
     }
 
     @Override
-    @GlobalTransactional(rollbackFor = Exception.class)
+//    @GlobalTransactional(rollbackFor = Exception.class)
     public void analysisSeataTcc() {
         reportClient.saveTest();
 
-        accountClient.deductBalance();
+//        accountClient.deductBalance();
 
 
 //        int a= 3/0;
     }
 
     @Override
-    @GlobalTransactional(rollbackFor = Exception.class)
+//    @GlobalTransactional(rollbackFor = Exception.class)
     public void analysisSeata() {
+        System.out.println(1);
         int ecgLen = 256 * 10;
         float[] ecg = new float[ecgLen];
         for(int i = 0; i < ecgLen; i++){
             ecg[i] = 1.322f;
         }
-        analysisDLClient.dl(ecg);
+        analysisDLClient.dl();
 
-        int[] rPeaks = new int[10];
-        for(int i = 0; i < 10; i++){
-            rPeaks[i] = 1;
+//        int[] rPeaks = new int[10];
+//        for(int i = 0; i < 10; i++){
+//            rPeaks[i] = 1;
+//        }
+//        analysisHrvClient.hrv(rPeaks);
+//        int a= 3/0;
+    }
+
+    @Override
+    public void analysisOpenFeign() {
+        int ecgLen = 256 * 10;
+        float[] ecg = new float[ecgLen];
+        for(int i = 0; i < ecgLen; i++){
+            ecg[i] = 1.322f;
         }
-        analysisHrvClient.hrv(rPeaks);
-        int a= 3/0;
+//        analysisDLClient.dl(ecg);
     }
 
     /**

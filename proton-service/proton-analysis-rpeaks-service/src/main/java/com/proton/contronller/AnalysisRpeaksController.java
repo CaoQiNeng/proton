@@ -18,10 +18,17 @@ public class AnalysisRpeaksController {
         this.analysisRpeaksService = analysisRpeaksService;
     }
 
-    @PostMapping("/findRpeaks")
-    public int[] findRpeaks(@RequestBody float[] ecg) {
-        log.info("begin findRpeaks, ecg len: [{}]", ecg.length);
+//    @PostMapping("/findRpeaks")
+//    public int[] findRpeaks(@RequestBody float[] ecg) {
+//        log.info("begin findRpeaks, ecg len: [{}]", ecg.length);
+//
+//        return analysisRpeaksService.findRpeaks(ecg);
+//    }
 
-        return analysisRpeaksService.findRpeaks(ecg);
+    @PostMapping("/findRpeaks")
+    public int findRpeaks() {
+        log.info("begin findRpeaks, ecg len:");
+
+        return 0;
     }
 }

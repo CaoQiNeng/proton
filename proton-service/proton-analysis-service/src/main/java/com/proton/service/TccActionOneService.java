@@ -1,9 +1,9 @@
 package com.proton.service;
 
 import com.proton.entity.AnalysisResult;
-import io.seata.rm.tcc.api.BusinessActionContext;
-import io.seata.rm.tcc.api.BusinessActionContextParameter;
-import io.seata.rm.tcc.api.TwoPhaseBusinessAction;
+//import io.seata.rm.tcc.api.BusinessActionContext;
+//import io.seata.rm.tcc.api.BusinessActionContextParameter;
+//import io.seata.rm.tcc.api.TwoPhaseBusinessAction;
 import org.springframework.stereotype.Service;
 
 /**

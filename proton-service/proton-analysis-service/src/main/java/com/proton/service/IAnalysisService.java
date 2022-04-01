@@ -12,4 +12,6 @@ public interface IAnalysisService {
      void analysisSeataTcc();
 
     void analysisSeata();
+
+    void analysisOpenFeign();
 }

@@ -23,6 +23,12 @@ public class AnalysisController {
         analysisService.analysisSeata();
     }
 
+    @GetMapping("/analysisOpenFeign")
+    public void analysisOpenFeign() {
+//        analysisService.analysis();
+        analysisService.analysisOpenFeign();
+    }
+
     @PostMapping("/analysisSeataTcc")
     public void analysisSeataTcc() {
 //        analysisService.analysis();

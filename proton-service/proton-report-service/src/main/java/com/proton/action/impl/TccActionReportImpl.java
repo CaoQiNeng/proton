@@ -46,7 +46,7 @@ public class TccActionReportImpl implements TccActionReport {
         Report report = new Report();
         report.setState(2);
 
-        reportDao.save(report);
+//        reportDao.save(report);
         LOGGER.info("TccActionOne commit, xid:" + xid);
         return true;
     }

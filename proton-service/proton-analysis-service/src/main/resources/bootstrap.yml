@@ -23,9 +23,9 @@ spring:
 #        metadata:
 #          management:
 #            context-path: ${server.servlet.context-path}/actuator
-    alibaba:
-      seata:
-        tx-service-group: proton # seata 全局事务分组
+#    alibaba:
+#      seata:
+#        tx-service-group: proton # seata 全局事务分组
 #        registry:
 #          type: nacos
 #          nacos:

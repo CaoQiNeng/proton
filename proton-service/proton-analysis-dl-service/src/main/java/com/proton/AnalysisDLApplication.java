@@ -1,6 +1,6 @@
 package com.proton;
 
-import com.proton.conf.DataSourceProxyAutoConfiguration;
+//import com.proton.conf.DataSourceProxyAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Import;
  * */
 //@EnableDiscoveryClient
 @SpringBootApplication
-@Import(DataSourceProxyAutoConfiguration.class)
+//@Import(DataSourceProxyAutoConfiguration.class)
 public class AnalysisDLApplication {
 
     public static void main(String[] args) {

@@ -20,5 +20,5 @@ public interface AnalysisDLClient {
             value = "/proton-dl-analysis/analysis-dl/dl",
             method = RequestMethod.POST
     )
-    int dl(@RequestBody float[] ecg);
+    int dl();
 }

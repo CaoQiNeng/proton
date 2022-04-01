@@ -2,10 +2,7 @@ package com.proton.contronller;
 
 import com.proton.service.AnalysisDLService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -23,9 +20,16 @@ public class AnalysisDLController {
         this.analysisHrvService = analysisHrvService;
     }
 
+//    @PostMapping("/dl")
+//    public int dl(@RequestBody float[] ecg) {
+//        log.info("begin dl, ecg len: [{}]", ecg.length);
+//        return analysisHrvService.dl(ecg);
+//    }
+
     @PostMapping("/dl")
-    public int dl(@RequestBody float[] ecg) {
-        log.info("begin dl, ecg len: [{}]", ecg.length);
-        return analysisHrvService.dl(ecg);
+    public int dl() {
+//        log.info("begin dl, ecg len");\
+        System.out.println(1);
+        return 0;
     }
 }

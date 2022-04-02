@@ -19,14 +19,14 @@ public class BalanceController {
         this.balanceService = balanceService;
     }
 
-    @GetMapping("/current-balance")
-    public BalanceInfo getCurrentUserBalanceInfo() {
-        return balanceService.getCurrentUserBalanceInfo();
+    @PostMapping("/update-balance")
+    public void updateBalance() {
+        int a = balanceService.updateBalance();
     }
 
-    @PutMapping("/deduct-balance")
-    public void deductBalance() {
-        BalanceInfo balanceInfo = new BalanceInfo(16L, 1L, 0L);
-        balanceService.deductBalance(balanceInfo);
-    }
+//    @PutMapping("/deduct-balance")
+//    public void deductBalance() {
+//        BalanceInfo balanceInfo = new BalanceInfo(16L, 1L, 0L);
+//        balanceService.deductBalance(balanceInfo);
+//    }
 }

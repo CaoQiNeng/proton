@@ -11,8 +11,8 @@ spring:
       # 服务注册发现
       discovery:
         enabled: true # 如果不想使用 Nacos 进行服务注册和发现, 设置为 false 即可
-#        server-addr: 172.29.81.251:8848
-        server-addr: 101.132.223.136:8848
+        server-addr: 172.29.81.251:8848
+#        server-addr: 101.132.223.136:8848
         # server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850 # Nacos 服务器地址
         namespace: bd69d88f-25f6-4d4a-a52c-def3cc3ada9d
         metadata:
@@ -23,9 +23,9 @@ spring:
 #        metadata:
 #          management:
 #            context-path: ${server.servlet.context-path}/actuator
-    alibaba:
-      seata:
-        tx-service-group: proton # seata 全局事务分组
+#    alibaba:
+#      seata:
+#        tx-service-group: proton # seata 全局事务分组
 #        registry:
 #          type: nacos
 #          nacos:
@@ -58,8 +58,8 @@ spring:
     open-in-view: false
   datasource:
     # 数据源
-#    url: jdbc:mysql://172.29.81.251:3306/proton?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
-    url: jdbc:mysql://101.132.223.136:3306/proton?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://172.29.81.251:3306/proton?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+#    url: jdbc:mysql://101.132.223.136:3306/proton?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: 135426,.Aa
     type: com.zaxxer.hikari.HikariDataSource

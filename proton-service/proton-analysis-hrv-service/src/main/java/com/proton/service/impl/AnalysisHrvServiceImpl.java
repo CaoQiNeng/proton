@@ -3,7 +3,7 @@ package com.proton.service.impl;
 import com.proton.dao.AnalysisHrvDao;
 import com.proton.entity.AnalysisResult;
 import com.proton.service.AnalysisHrvService;
-import io.seata.spring.annotation.GlobalTransactional;
+//import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,6 +1,6 @@
 ### 创建订单
 #POST http://127.0.0.1:9000/proton-analysis/order/create
-POST http://106.15.232.155:9000/proton-analysis/analysis/analysis
+#POST http://106.15.232.155:9000/proton-analysis/analysis/analysis
 #POST http://106.15.232.155:9000/proton-analysis/analysis/analysis
 #Content-Type: application/json
 #Accept: application/json
@@ -15,7 +15,7 @@ POST http://106.15.232.155:9000/proton-analysis/analysis/analysis
 #    }
 #  ]
 #}
-
+POST http://127.0.0.1:9000/proton-analysis/analysis/batchInsert
 #### mangodb
 #GET http://127.0.0.1:9000/proton-analysis/test2
 

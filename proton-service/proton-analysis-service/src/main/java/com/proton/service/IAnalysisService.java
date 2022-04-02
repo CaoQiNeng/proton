@@ -14,4 +14,6 @@ public interface IAnalysisService {
     void analysisSeata();
 
     void analysisOpenFeign();
+
+    void batchInsert(int q);
 }

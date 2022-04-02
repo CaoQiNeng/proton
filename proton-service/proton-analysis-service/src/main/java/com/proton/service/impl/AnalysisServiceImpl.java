@@ -7,12 +7,18 @@ import com.proton.service.IAnalysisService;
 //import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * <h1>订单相关服务接口实现</h1>
@@ -139,59 +145,59 @@ public class AnalysisServiceImpl implements IAnalysisService {
     }
 
 
+    @Override
+    public void batchInsert(int q) {
+        List<AnalysisResult> list = new LinkedList<AnalysisResult>();
+        int loopNum = 1000;
+        for (int j = 0; j < loopNum; j++){
+            String userID = String.format("1");
+            String rID = String.format("%07d", j);
+            String reportID = userID + '_' + rID;
 
-//    void batchInsert(int q) {
-//        List<AnalysisResult> list = new LinkedList<AnalysisResult>();
-//        int loopNum = 10000;
-//        for (int j = 0; j < loopNum; j++){
-//            String userID = String.format("%04d", q);
-//            String rID = String.format("%07d", j);
-//            String reportID = userID + '_' + rID;
-//
-//
-//            java.util.Date utilDate=new java.util.Date();
-//            Date d=new Date (utilDate.getTime());
-//            list.add(new AnalysisResult(1L,111L, reportID, 1, 1, 1, 1, d));
+
+            java.util.Date utilDate=new java.util.Date();
+            Date d=new Date (utilDate.getTime());
+            list.add(new AnalysisResult(1L, (long) (q*loopNum+j), reportID, 1, 1, 1, 1, d));
+        }
+//            System.out.println(i);
+//            analysisDao.save(list);
+
+
+//        int BATCH_SIZE = 10000;
+//        Iterator iterator = list.listIterator();
+//        int index = 0;
+//        while (iterator.hasNext()){
+//            em.persist(iterator.next());
+//            index++;
+//            if (index % BATCH_SIZE == 0){
+//                em.flush();
+//                em.clear();
+//            }
 //        }
-////            System.out.println(i);
-////            analysisDao.save(list);
-//
-//
-////        int BATCH_SIZE = 10000;
-////        Iterator iterator = list.listIterator();
-////        int index = 0;
-////        while (iterator.hasNext()){
-////            em.persist(iterator.next());
-////            index++;
-////            if (index % BATCH_SIZE == 0){
-////                em.flush();
-////                em.clear();
-////            }
-////        }
-////        if (index % BATCH_SIZE != 0){
-////            em.flush();
-////            em.clear();
-////        }
-//
-//        String sql = "Insert into t_proton_report_1000w VALUES(?,?,?,?,?,?,?,?)";
-//        jdbcTemplate.batchUpdate(sql,new BatchPreparedStatementSetter() {
-//            @Override
-//            public void setValues(PreparedStatement ps, int i) throws SQLException {
-//                ps.setLong(1,list.get(i).getId());
-//                ps.setLong(2,list.get(i).getUserId());
-//                ps.setString(3,list.get(i).getReprotId());
-//                ps.setInt(4,list.get(i).getModelResult());
-//                ps.setInt(5,list.get(i).getAveHr());
-//                ps.setInt(6,list.get(i).getAlo());
-//                ps.setInt(7,list.get(i).getLf());
-//                ps.setDate(8,list.get(i).getCreateTime());
-//            }
-//            @Override
-//            public int getBatchSize() {
-//                return list.size();
-//            }
-//        });
-//    }
+//        if (index % BATCH_SIZE != 0){
+//            em.flush();
+//            em.clear();
+//        }
+
+        String sql = "Insert into t_proton_report_50w VALUES(?,?,?,?,?,?,?,?)";
+        jdbcTemplate.batchUpdate(sql,new BatchPreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement ps, int i) throws SQLException {
+                ps.setLong(1,list.get(i).getId());
+                ps.setLong(2,list.get(i).getUserId());
+                ps.setString(3,list.get(i).getReprotId());
+                ps.setInt(4,list.get(i).getModelResult());
+                ps.setInt(5,list.get(i).getAveHr());
+                ps.setInt(6,list.get(i).getAlo());
+                ps.setInt(7,list.get(i).getLf());
+                ps.setDate(8,list.get(i).getCreateTime());
+            }
+            @Override
+            public int getBatchSize() {
+                return list.size();
+            }
+        });
+    }
 
 
 }

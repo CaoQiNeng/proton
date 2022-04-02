@@ -34,4 +34,13 @@ public class AnalysisController {
 //        analysisService.analysis();
         analysisService.analysisSeataTcc();
     }
+
+    @PostMapping("/batchInsert")
+    public void batchInsert() {
+//        analysisService.analysis();
+        for (int q = 0; q < 100; q++){
+            System.out.println(q);
+            analysisService.batchInsert(q);
+        }
+    }
 }

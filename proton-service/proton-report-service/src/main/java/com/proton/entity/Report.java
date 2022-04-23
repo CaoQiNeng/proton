@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Report {
     private String id;
-    private Integer model_result;
+    private Integer modelResult;
     private Integer ave_hr;
     private Integer alo;
     private Integer LF;
@@ -22,11 +22,11 @@ public class Report {
     }
 
     public Integer getModel_result() {
-        return model_result;
+        return modelResult;
     }
 
-    public void setModel_result(Integer model_result) {
-        this.model_result = model_result;
+    public void setModel_result(Integer modelResult) {
+        this.modelResult = modelResult;
     }
 
     public Integer getAve_hr() {

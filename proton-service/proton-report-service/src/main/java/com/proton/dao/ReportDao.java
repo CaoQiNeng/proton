@@ -8,6 +8,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class ReportDao {
 
@@ -23,15 +25,17 @@ public class ReportDao {
         mongoTemplate.save(test, "report");
     }
 
-//    /**
-//     * 根据用户名查询对象
-//     * @return
-//     */
-//    public MongoTest findTestByName(String name) {
-//        Query query=new Query(Criteria.where("name").is(name));
-//        MongoTest mgt =  mongoTemplate.findOne(query , MongoTest.class);
-//        return mgt;
-//    }
+    /**
+     * 根据用户名查询对象
+     * @return
+     */
+    public Report findReport() {
+        Query query = new Query(Criteria.where("modelResult").is(3));
+        List<Report> mgt =  mongoTemplate.find(query , Report.class);
+        System.out.println(mgt.get(10));
+        System.out.println(mgt.size());
+        return mgt.get(0);
+    }
 //
 //    /**
 //     * 更新对象

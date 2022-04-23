@@ -1,0 +1,120 @@
+server:
+  port: 9000
+  servlet:
+    context-path: /proton-dubbo-consumer
+
+spring:
+  application:
+    name: proton-dubbo-consumer # 应用名称也是构成 Nacos 配置管理 dataId 字段的一部分 (当 config.prefix 为空时)
+  cloud:
+    nacos:
+      # 服务注册发现
+      discovery:
+        enabled: true # 如果不想使用 Nacos 进行服务注册和发现, 设置为 false 即可
+#        server-addr: 172.29.81.251:8848
+        server-addr: 106.15.232.155:8848
+        # server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850 # Nacos 服务器地址
+#        namespace: bd69d88f-25f6-4d4a-a52c-def3cc3ada9d
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+          user.name: imooc-qinyi
+          user.password: 88889999
+#        metadata:
+#          management:
+#            context-path: ${server.servlet.context-path}/actuator
+#    alibaba:
+#      seata:
+#        tx-service-group: proton # seata 全局事务分组
+#        registry:
+#          type: nacos
+#          nacos:
+#            application: seata-server
+#            server-addr: 101.132.223.136:8848
+#            group: SEATA_GROUP
+#            namespace: bd69d88f-25f6-4d4a-a52c-def3cc3ada9d
+#            username: nacos
+#            password: nacos
+#        config:
+#          type: nacos
+#          nacos:
+#            server-addr: 101.132.223.136:8848
+#            group: SEATA_GROUP
+#            namespace: bd69d88f-25f6-4d4a-a52c-def3cc3ada9d
+#            dataId: seataServer.properties
+#            username: nacos
+#            password: nacos
+
+#  data:
+#    mongodb:
+#      uri: mongodb://106.15.232.155:27017/test
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: none
+#    properties:
+#      hibernate.show_sql: true
+#      hibernate.format_sql: true
+#    open-in-view: false
+#  datasource:
+#    # 数据源
+##    url: jdbc:mysql://172.29.81.251:3306/proton?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+#    url: jdbc:mysql://106.15.232.155:3306/proton?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+#    username: root
+#    password: 135426,.Aa
+#    type: com.zaxxer.hikari.HikariDataSource
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    # 连接池
+#  hikari:
+#    maximum-pool-size: 1000
+#    minimum-idle: 1000
+#    idle-timeout: 30000
+#    connection-timeout: 30000
+#    max-lifetime: 45000
+#    auto-commit: true
+#    pool-name: ImoocEcommerceHikariCP
+#
+## Feign 的相关配置
+#feign:
+#  # feign 开启 gzip 压缩
+#  compression:
+#    request:
+#      enabled: true
+#      mime-types: text/xml,application/xml,application/json
+#      min-request-size: 1024
+#    response:
+#      enabled: true
+#  # 禁用默认的 http, 启用 okhttp
+#  httpclient:
+#    enabled: false
+#  okhttp:
+#    enabled: true
+#  # OpenFeign 集成 Hystrix
+##  hystrix:
+##    enabled: true
+
+dubbo:
+  registry:
+    address: nacos://106.15.232.155:8848
+  consumer:
+    timeout: 5000
+
+#dubbo:
+##  protocol:    #Dubbo 服务暴露的协议配置，其中子属性 name 为协议名称，port 为协议端口（ -1 表示自增端口，从 20880 开始）
+##    name: dubbo
+##    port: 20890  #dubbo协议缺省端口为20880，rmi协议缺省端口为1099，http和hessian协议缺省端口为80；如果没有配置port，则自动采用默认端口，如果配置为-1，则会分配一个没有被占用的端口。Dubbo 2.4.0+，分配的端口在协议缺省端口的基础上增长，确保端口段可控
+#  registry:
+#    #其中前缀spring-cloud说明：挂载到 Spring Cloud注册中心
+#    address: nacos://106.15.232.155:8848  #dubbo服务注册端口，注册中心服务器地址，如果地址没有端口缺省为9090，同一集群内的多个地址用逗号分隔，如：ip:port,ip:port
+#  consumer:
+#    check: false  #关闭订阅服务是否启动的检查【检查时，没有服务提供者会报错】
+
+# 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

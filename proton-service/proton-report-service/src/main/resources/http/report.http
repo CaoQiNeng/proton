@@ -1,3 +1,6 @@
+GET http://127.0.0.1:9201/proton-report/findReport
+
+###
 ### mangodb
-GET http://127.0.0.1:9200/proton-report/test1
+GET http://127.0.0.1:9201/proton-report/test1
 #GET http://106.15.232.155:9200/proton-report/test1

@@ -1,0 +1,10 @@
+### 批量插入医生
+POST http://127.0.0.1:9500/proton-doctor-service/doctor-balance/batch-insert-user
+
+### 批量插入报告
+POST http://127.0.0.1:9500/proton-doctor-service/doctor-balance/batch-insert-report
+
+### 批量插入报告
+POST http://106.15.232.155:9500/proton-doctor-service/doctor-balance/get-mark-report
+#POST http://127.0.0.1:9500/proton-doctor-service/doctor-balance/get-mark-report
+

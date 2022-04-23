@@ -22,6 +22,9 @@
         <module>proton-report-service</module>
         <module>proton-service-config</module>
         <module>proton-service-sdk</module>
+        <module>proton-doctor-service</module>
+        <module>proton-report-dubbo-service</module>
+        <module>proton-dubbo-consumer</module>
     </modules>
 
     <!-- 模块名及描述信息 -->

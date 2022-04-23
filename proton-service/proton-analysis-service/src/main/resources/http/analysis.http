@@ -15,7 +15,7 @@
 #    }
 #  ]
 #}
-POST http://127.0.0.1:9000/proton-analysis/analysis/batchInsert
+POST http://127.0.0.1:9000/proton-analysis/analysis/test-dubbo
 #### mangodb
 #GET http://127.0.0.1:9000/proton-analysis/test2
 

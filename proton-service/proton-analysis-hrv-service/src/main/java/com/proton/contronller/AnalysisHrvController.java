@@ -17,15 +17,15 @@ import java.util.Map;
 @RequestMapping("/analysis-hrv")
 public class AnalysisHrvController {
 
-    private final AnalysisHrvService analysisHrvService;
-
-    public AnalysisHrvController(AnalysisHrvService analysisHrvService) {
-        this.analysisHrvService = analysisHrvService;
-    }
-
-    @PostMapping("/hrv")
-    public Map<String, Integer> hrv(@RequestBody int[] rpeaks) {
-        log.info("begin hrv, rpeaks len: [{}]", rpeaks.length);
-        return analysisHrvService.hrv(rpeaks);
-    }
+//    private final AnalysisHrvService analysisHrvService;
+//
+//    public AnalysisHrvController(AnalysisHrvService analysisHrvService) {
+//        this.analysisHrvService = analysisHrvService;
+//    }
+//
+//    @PostMapping("/hrv")
+//    public Map<String, Integer> hrv(@RequestBody int[] rpeaks) {
+//        log.info("begin hrv, rpeaks len: [{}]", rpeaks.length);
+//        return analysisHrvService.hrv(rpeaks);
+//    }
 }

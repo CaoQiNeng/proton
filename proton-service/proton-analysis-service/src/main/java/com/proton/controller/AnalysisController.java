@@ -1,7 +1,9 @@
 package com.proton.controller;
 
+import com.proton.service.HelloService;
 import com.proton.service.IAnalysisService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/analysis")
 public class AnalysisController {
     private final IAnalysisService analysisService;
+
+    @DubboReference
+    HelloService helloService;
 
     public AnalysisController(IAnalysisService analysisService) {
         this.analysisService = analysisService;
@@ -43,4 +48,17 @@ public class AnalysisController {
             analysisService.batchInsert(q);
         }
     }
+
+//    @PostMapping("/test-dubbo")
+//    public void testDubbo() {
+//        String a = helloService.hello();
+//
+//        System.out.println(a);
+//
+////        analysisService.analysis();
+////        for (int q = 0; q < 100; q++){
+////            System.out.println(q);
+////            analysisService.batchInsert(q);
+////        }
+//    }
 }

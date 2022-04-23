@@ -17,12 +17,10 @@ public class ReportContronller {
         reportService.save();
     }
 
-//    @GetMapping(value="/test2")
-//    public MongoTest findTestByName(){
-//        MongoTest mgtest= mtdao.findTestByName("ceshi");
-//        System.out.println("mgtest is "+mgtest);
-//        return mgtest;
-//    }
+    @GetMapping(value="/findReport")
+    public void findTestByName() throws Exception {
+        reportService.findReport();
+    }
 //
 //    @GetMapping(value="/test3")
 //    public void updateTest(){

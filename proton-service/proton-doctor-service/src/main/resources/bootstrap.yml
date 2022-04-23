@@ -1,0 +1,104 @@
+server:
+  port: 9500
+  servlet:
+    context-path: /proton-doctor-service
+
+spring:
+  application:
+    name: proton-doctor-service # 应用名称也是构成 Nacos 配置管理 dataId 字段的一部分 (当 config.prefix 为空时)
+  cloud:
+    nacos:
+      # 服务注册发现
+      discovery:
+        enabled: true # 如果不想使用 Nacos 进行服务注册和发现, 设置为 false 即可
+#        server-addr: 172.29.81.251:8848
+        server-addr: 101.132.223.136:8848
+        # server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850 # Nacos 服务器地址
+        namespace: bd69d88f-25f6-4d4a-a52c-def3cc3ada9d
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+          user.name: imooc-qinyi
+          user.password: 88889999
+#        metadata:
+#          management:
+#            context-path: ${server.servlet.context-path}/actuator
+#    alibaba:
+#      seata:
+#        tx-service-group: proton # seata 全局事务分组
+#        registry:
+#          type: nacos
+#          nacos:
+#            application: seata-server
+#            server-addr: 101.132.223.136:8848
+#            group: SEATA_GROUP
+#            namespace: bd69d88f-25f6-4d4a-a52c-def3cc3ada9d
+#            username: nacos
+#            password: nacos
+#        config:
+#          type: nacos
+#          nacos:
+#            server-addr: 101.132.223.136:8848
+#            group: SEATA_GROUP
+#            namespace: bd69d88f-25f6-4d4a-a52c-def3cc3ada9d
+#            dataId: seataServer.properties
+#            username: nacos
+#            password: nacos
+
+  data:
+    mongodb:
+      uri: mongodb://106.15.232.155:27017/test
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.show_sql: true
+      hibernate.format_sql: true
+    open-in-view: false
+  datasource:
+    # 数据源
+#    url: jdbc:mysql://172.29.81.251:3306/proton?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://101.132.223.136:3306/proton?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 135426,.Aa
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 连接池
+  hikari:
+    maximum-pool-size: 1000
+    minimum-idle: 1000
+    idle-timeout: 30000
+    connection-timeout: 30000
+    max-lifetime: 45000
+    auto-commit: true
+    pool-name: ImoocEcommerceHikariCP
+
+# Feign 的相关配置
+feign:
+  # feign 开启 gzip 压缩
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 1024
+    response:
+      enabled: true
+  # 禁用默认的 http, 启用 okhttp
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+  # OpenFeign 集成 Hystrix
+#  hystrix:
+#    enabled: true
+
+# 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
